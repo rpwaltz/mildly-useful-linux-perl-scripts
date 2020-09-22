@@ -87,7 +87,7 @@ my $outfile;
 my $csv = Text::CSV->new(
     {
         eol         => "\012",
-        sep_char    => ";",
+        sep_char    => ",",
         escape_char => "\\",
         quote_char  => "\""
     }
