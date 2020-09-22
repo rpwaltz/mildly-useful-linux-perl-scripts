@@ -74,7 +74,8 @@ for ( my $i = 1 ; $i <= $#mtr_array ; ++$i ) {
 
 my ( $sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst ) =
   localtime();
-
+$year += 1900;
+$mon  += 1;
 $output_folder = "${output_folder}/" if defined($output_folder);
 
 my $filename =
@@ -91,6 +92,7 @@ my $csv = Text::CSV->new(
         quote_char  => "\""
     }
 );
+
 for ( my $i = 0 ; $i <= $#mtr_array ; ++$i ) {
     my $mtr_line = $mtr_array[$i];
     $csv->print( $csv_outputFileHandle, $mtr_line );
@@ -102,9 +104,9 @@ makeRoutingAndLocationCSV.pl - produce a CSV file containing routing and locatio
 
 =head1 SYNOPSIS
 
-	--hostname,-h         Hostname to trace
-	--output_folder,-o    Folder destination to output CSV file
-	--help,-h             Print this help
+	--hostname         Hostname to trace
+	--output_folder    Folder destination to output CSV file
+	--help             Print this help
 
 =head1 VERSION
 
